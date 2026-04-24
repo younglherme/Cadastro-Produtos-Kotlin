@@ -7,12 +7,14 @@ import jakarta.persistence.Id
 
 
 @Entity
-class Produto {
+class Produto(
+    val nome: String,
+    val preco: Double
+) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-    val nome: String,
-    val preco: Double
+    val id: Long? = null
+
 
 }
