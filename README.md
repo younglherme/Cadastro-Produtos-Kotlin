@@ -2,7 +2,6 @@
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-7F52FF?style=flat&logo=kotlin&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6-6DB33F?style=flat&logo=springboot&logoColor=white)
-![Java](https://img.shields.io/badge/Java-17-ED8B00?style=flat&logo=openjdk&logoColor=white)
 ![H2](https://img.shields.io/badge/Database-H2-003545?style=flat)
 ![Maven](https://img.shields.io/badge/Build-Maven-C71A36?style=flat&logo=apachemaven&logoColor=white)
 
@@ -12,11 +11,11 @@ API REST para cadastro e gerenciamento de produtos, desenvolvida com **Kotlin** 
 
 ## 🚀 Tecnologias
 
-- **Kotlin** 2.2.21
-- **Spring Boot** 4.0.6
+- **Kotlin** 
+- **Spring Boot** 
 - **Spring Data JPA**
 - **Spring Web MVC**
-- **H2 Database** (banco em memória)
+- **H2 Database**
 - **Jackson Kotlin Module**
 - **Maven**
 
@@ -86,16 +85,6 @@ http://localhost:8080/h2-console
 
 ---
 
-## 🧪 Testes
-
-Execute os testes com:
-
-```bash
-./mvnw test
-```
-
----
-
 ## 📁 Estrutura do projeto
 
 ```
@@ -121,7 +110,3 @@ Este projeto foi desenvolvido como exercício prático para aprender **Kotlin** 
 - Uso de data classes e null-safety do Kotlin
 
 ---
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
