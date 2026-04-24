@@ -8,8 +8,8 @@ import jakarta.persistence.Id
 
 @Entity
 class Produto(
-    val nome: String,
-    val preco: Double
+    var nome: String,
+    var preco: Double
 ) {
 
     @Id

@@ -13,4 +13,14 @@ class ProdutoService(private val repository: ProdutoRepository) {
 
     fun buscarPorId(id: Long) = repository.findById(id).orElse(null)
 
+    fun atualizar(id: Long, produto: Produto): Produto? {
+        val produtoExistente = repository.findById(id).orElse(null) ?: return null
+        produtoExistente.nome = produto.nome
+        produtoExistente.preco = produto.preco
+        return repository.save(produtoExistente)
+    }
+    fun deletar(id: Long) {
+        repository.deleteById(id)
+    }
+
 }

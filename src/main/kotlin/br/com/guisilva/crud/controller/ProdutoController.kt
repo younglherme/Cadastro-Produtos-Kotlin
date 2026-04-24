@@ -17,4 +17,10 @@ class ProdutoController(private val service: ProdutoService) {
     @GetMapping("/{id}")
     fun buscarPorId(@PathVariable id: Long) = service.buscarPorId(id)
 
+    @PutMapping("/{id}")
+    fun atualizar(@PathVariable id: Long, @RequestBody produto: Produto) = service.atualizar(id, produto)
+
+    @DeleteMapping("/{id}")
+    fun deletar(@PathVariable id: Long) = service.deletar(id)
+
 }
