@@ -110,3 +110,4 @@ Este projeto foi desenvolvido como exercício prático para aprender **Kotlin** 
 - Uso de data classes e null-safety do Kotlin
 
 ---
+
