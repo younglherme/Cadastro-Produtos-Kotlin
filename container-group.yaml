@@ -1,0 +1,60 @@
+apiVersion: 2021-09-01
+location: brazilsouth
+name: kotlin-crud
+properties:
+  containers:
+    - name: kotlin-crud-api
+      properties:
+        image: kotlincrud.azurecr.io/kotlin-crud-api:latest
+        ports:
+          - port: 8080
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGb: 1.0
+        environmentVariables:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://localhost:5432/cadastro_produtos
+          - name: SPRING_DATASOURCE_USERNAME
+            value: postgres
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: postgres123
+          - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+            value: update
+          - name: SPRING_JPA_DATABASE_PLATFORM
+            value: org.hibernate.dialect.PostgreSQLDialect
+          - name: SPRING_PROFILES_ACTIVE
+            value: prod
+
+    - name: postgres-db
+      properties:
+        image: postgres:16-alpine
+        ports:
+          - port: 5432
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGb: 0.5
+        environmentVariables:
+          - name: POSTGRES_DB
+            value: cadastro_produtos
+          - name: POSTGRES_USER
+            value: postgres
+          - name: POSTGRES_PASSWORD
+            value: postgres123
+
+  imageRegistryCredentials:
+    - server: kotlincrud.azurecr.io
+      username: kotlincrud
+      password: 6qUKJYEegh1qwt6gB9JI755v58i0M6f7AZo219sF3lCFzN72UdtAJQQJ99CEACZoyfiEqg7NAAACAZCR3DZm
+
+  ipAddress:
+    type: Public
+    ports:
+      - port: 8080
+        protocol: TCP
+
+  osType: Linux
+  restartPolicy: Always

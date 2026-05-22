@@ -7,14 +7,14 @@ WORKDIR /app
 # Copiar pom.xml
 COPY pom.xml .
 
-# Download dependencies
-RUN mvn dependency:resolve
+# Download dependencies (offline cache)
+RUN mvn dependency:go-offline -B
 
 # Copiar source code
 COPY src ./src
 
 # Build application
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -B
 
 # Stage 2: Runtime
 FROM eclipse-temurin:17-jre-alpine
@@ -36,9 +36,9 @@ USER appuser
 # Expose port
 EXPOSE 8080
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+# Health check (sem actuator — usa o endpoint raiz)
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=5 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 
 # Run application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
